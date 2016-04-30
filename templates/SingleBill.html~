@@ -1,0 +1,24 @@
+<!doctype html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <title>online banking system </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <div class = 'container-fluid'>
+            <div class = 'row'>
+                
+                <div class="col-md-4 col-md-offset-4">
+			<ul class='list-group'>
+			<li class='list-group-item'>{{bill.customer_id}}</li>
+			<li class='list-group-item'>{{bill.customer_name}}</li>
+			<li class='list-group-item'>{{bill.customer_address}}</li>
+			<li class='list-group-item'>{{bill.amount}}</li>
+			</ul>
+       
+    </body>
+</html>

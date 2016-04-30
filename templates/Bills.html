@@ -1,0 +1,28 @@
+<!doctype html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <title>online banking system </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+<body>
+<div class = 'container-fluid'>
+            <div class = 'row'>
+                
+                <div class="col-md-4 col-md-offset-4">
+<ul class='list-group'>
+	{% for bill in bills %}
+		<li class='list-group-item'> Amount:{{bill.amount}}</li>
+		<li class='list-group-item'> Name:{{bill.customer_name}}</li>
+		<li class='list-group-item'><a href="{%url 'BillUpdateForm' bill.id%}">update bill</a></li>
+		<li class='list-group-item'>---------</li>
+	{% endfor %}
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from user.models import *
+
+# Create your models here. 
+class ServiceProvider(NewUser):
+	company_name=models.CharField(max_length=50)
+        
+class Bill(models.Model):
+	STATUS_CHOICES=(('unpaid','not_paid'),('paid','paid'),)	
+	date_of_payment=models.DateTimeField(auto_now_add=True)
+	due_date=models.DateTimeField(null=True)
+	bill_status=models.CharField(max_length=6,choices=STATUS_CHOICES,default=STATUS_CHOICES[0][0])
+	amount=models.IntegerField()
+	date_of_birth=models.DateField(null=True)
+	phone_no=models.IntegerField()
+	provider=models.ForeignKey(ServiceProvider,related_name='created')
+	customer_id=models.CharField(unique=True,max_length=10)
+	customer_name=models.CharField(max_length=100)
+	customer_address=models.CharField(max_length=1000)
+	
+
+	
+	

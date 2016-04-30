@@ -1,0 +1,28 @@
+<!doctype html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <title>MyQuora </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'account/css/base.css' %}" />
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body id="mybody">
+     {{t}}
+        <div class = 'container-fluid'>
+        
+                    <form action = "{% url 'transferHandle' %}" method = 'POST' class="form form-inline">
+                        {% if next %}
+                        <input type="hidden" name='next' value ="{{next}}">
+                        {% endif %}
+                        {% csrf_token %}
+                        {% bootstrap_form transferform %}
+                        {% buttons submit='transfer' %}
+                        {% endbuttons %}
+                    </form>
+
+         </div>
+    </body>
+</html>

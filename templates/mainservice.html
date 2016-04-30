@@ -1,0 +1,27 @@
+<!doctype html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <title>online banking system </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <div class = 'container-fluid'>
+            <div class = 'row'>
+                
+                <div class="col-md-4 col-md-offset-4">
+			<ul class='list-group'>
+			<li class='list-group-item'><a href="{%url 'balance'%}">show balance</a></li>
+			<li class='list-group-item'><a href="{%url 'transDetails'%}">Transaction Details</a></li>
+			<li class='list-group-item'><a href="{%url 'BillAddForm'%}">Bill Add</a></li>
+			<li class='list-group-item'><a href="{%url 'BillDeleteForm'%}">Bill Delete</a></li>
+			<li class='list-group-item'><a href="{%url 'BillViewForm'%}">Bill View</a></li>
+			<li class='list-group-item'><a href="{%url 'Bills'%}">Show Bills</a></li>
+			<li class='list-group-item'><a href="{%url 'logoutservice'%}">Log out</a></li>
+			</ul>
+       
+    </body>
+</html>

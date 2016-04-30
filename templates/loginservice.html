@@ -1,0 +1,35 @@
+<!doctype html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <title>online banking system </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <div class = 'container-fluid'>
+            <div class = 'row'>
+                
+                <div class="col-md-4 col-md-offset-4">
+                    {% if act %}
+                    <p> Your account is activated. Login to Procceed. </p>
+                    {% endif %}
+                    <form action = "{% url 'loginservice' %}" method = 'POST' class="form">
+                        {% if next %}
+                        <input type="hidden" name='next' value ="{{next}}">
+                        {% endif %}
+                        {% csrf_token %}
+                        {% bootstrap_form loginform %}
+                        {% buttons submit='Login' %}
+                        {% endbuttons %}
+                    </form>
+                </div>
+		<div><p>New user 
+		<a href="{%url 'rsignupservice'%}">Sign up</a>
+		here</p></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+{% load staticfiles %}
+{% load bootstrap3 %}
+<html>
+    <head>
+        <title>online banking system </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+	 <div class = 'container-fluid'>
+          <ul class='list-group'>
+		<li class='list-group-item'>Name:{{bill.customer_name}}</li>
+		<li class='list-group-item'>ID:{{bill.customer_id}}</li>
+		<li class='list-group-item'>Provider{{bill.provider}}</li>
+		<li class='list-group-item'>Amount:{{bill.amount}}</li>
+		<li class='list-group-item'>Status:{{bill.bill_status}}</li>
+	 </ul>
+	 {% if bill.bill_status == 'unpaid' %}
+          <div class = 'container-fluid'>
+            <div class = 'row'>
+                
+                <div class="col-md-4 col-md-offset-4">
+               
+                    <form action = "{% url 'MakePayment' %}" method = 'POST' class="form">
+                        {% if next %}
+                        <input type="hidden" name='next' value ="{{next}}">
+                        
+                        {% endif %}
+			<input type="hidden" name='bill' value ="{{bill}}">
+                        {% csrf_token %}
+                        {% buttons submit='submit' %}
+                        {% endbuttons %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+       
+
+    </body>
+</html>
